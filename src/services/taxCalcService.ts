@@ -7,9 +7,9 @@ type Employee = {
 
 export const getSimpleCalculatorService = (name: string, annual_salary: number) => {
   try {
-    const grossMonthlyIncome = annual_salary / 12;
+    const grossMonthlyIncome = Math.round(annual_salary / 12);
     const incomeTax = calculateTaxPerMonth(annual_salary);
-    const netMonthlyIncome = grossMonthlyIncome - incomeTax;
+    const netMonthlyIncome = Math.round(grossMonthlyIncome - incomeTax);
     const payslip: Employee = {
       name,
       grossMonthlyIncome,

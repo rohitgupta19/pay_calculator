@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.json({ limit: '50mb', type: 'application/json' }));
 
-app.use('/tax', taxRouter);
+app.use('/payslip', taxRouter);
 
 app.get('/', (req, res) => {
   res.send('This is a tax calculator landing web page!');

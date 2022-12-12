@@ -1,32 +1,21 @@
-/* type Employee = {
+type Employee = {
   name: string;
-  gross_monthly_income: string;
+  grossMonthlyIncome: number;
   incomeTax: number;
-  net_monthly_income: string;
-}; */
+  netMonthlyIncome: number;
+};
 
 export const getSimpleCalculatorService = (name: string, annual_salary: number) => {
   try {
-    console.log('name', name);
-    console.log('annual_salary', annual_salary);
-    const gross_monthly_income = annual_salary / 12;
-    console.log('gross_monthly_income', gross_monthly_income);
+    const grossMonthlyIncome = annual_salary / 12;
     const incomeTax = calculateTaxPerMonth(annual_salary);
-    const net_monthly_income = gross_monthly_income - incomeTax;
-    console.log('net_monthly_income', net_monthly_income);
-    const payslip = {
+    const netMonthlyIncome = grossMonthlyIncome - incomeTax;
+    const payslip: Employee = {
       name,
-      'gross monthly income': gross_monthly_income,
-      'monthly income tax': incomeTax,
-      'net monthly income': net_monthly_income
+      grossMonthlyIncome,
+      incomeTax,
+      netMonthlyIncome
     };
-
-    /*  const payslip1: Employee = {
-      name,
-      gross_monthly_income: gross_monthly_income.toFixed(2),
-      incomeTax: incomeTax,
-      net_monthly_income: net_monthly_income.toFixed(2)
-    }; */
     return payslip;
   } catch (error) {}
 };
@@ -44,7 +33,7 @@ export const calculateTaxPerMonth = (taxableIncome: number): number => {
   } else if (taxableIncome > 180000) {
     tax = (taxRate.third + (taxableIncome - 180000) * 0.4) / 12;
   }
-  return tax;
+  return Math.round(tax * 100) / 100;
 };
 
 const taxRate = {

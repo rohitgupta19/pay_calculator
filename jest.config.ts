@@ -3,9 +3,5 @@ module.exports = {
   testEnvironment: 'node',
   setupFiles: ['dotenv/config'],
   rootDir: './',
-  testMatch: ['<rootDir>/src/*/*.test.ts'],
-  moduleNameMapper: {
-    '^src$': '<rootDir>/tests',
-    '^src/(.+)$': '<rootDir>/tests/$1'
-  }
+  testMatch: ['<rootDir>/src/*/*.test.ts']
 };
